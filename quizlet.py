@@ -129,7 +129,7 @@ def download_flashcard_set(setID):
     title = flashcardSet['title']
     print("Downloaded '%s' set to sets/%s" % (title, setFilename))
 
-def quiz_from_file(setPath):
+def quiz_from_file(setPath, hints):
     f = open(setPath)
     try:
         terms = load_flashcard_set_terms_from_file(f)
@@ -179,7 +179,10 @@ def quiz_from_file(setPath):
         print("Question %d/%d" % (questionNumber+1, len(terms)))
 
         while answerParts:
+            if(hints):
+                display_hint(answerParts)
             display_term(term, answerParts)
+
             userAnswer = raw_input('Your answer: ')
             print("")
 
@@ -225,8 +228,11 @@ if __name__ == "__main__":
     # If a set Id, get card information and save json to file.
     arg = sys.argv[1]   
 
+    # If --hint flag passed, always show hints
+    hints = len(sys.argv) > 2 and sys.argv[2] == "--hints"
+
     if(os.path.exists(arg)):
-        quiz_from_file(arg)
+        quiz_from_file(arg, hints)
     elif(arg.isdigit()):
         download_flashcard_set(arg)
     else:
