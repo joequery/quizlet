@@ -1,0 +1,4 @@
+env/
+quizlet_secret.py
+*.pyc
+*.swp
