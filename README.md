@@ -16,7 +16,7 @@ Requirements
 Installation
 ------------
 
-    $ git clone git@github.com:joequery/quizlet.git
+    $ git clone git://github.com/joequery/quizlet.git
     $ cd quizlet
     $ sudo pip install -r requirements.txt
 
