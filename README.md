@@ -76,7 +76,7 @@ Now navigate to the location you cloned this repository.
 
 We will now download the JSON representing the flashcard set.
 
-    $ python quizlet.py 20147210
+    $ python download.py 20147210
     Downloaded 'Computer Security Management Ch5' set to
     sets/computer-security-management-ch5-flash-cards.quiz
 
@@ -85,10 +85,10 @@ We will now download the JSON representing the flashcard set.
 ### Beginning the quiz
 
 Now that you have the flashcard set downloaded, start the quiz by passing the
-path to the quiz file you want to study to `quizlet.py`. (Tab auto-completion is
+path to the quiz file you want to study to `study.py`. (Tab auto-completion is
 your friend here)
 
-    $ python quizlet.py sets/computer-security-management-ch5-flash-cards.quiz
+    $ python study.py sets/computer-security-management-ch5-flash-cards.quiz
 
 You should now see the quiz start
 
@@ -118,5 +118,25 @@ Entering in `h` as your answer brings up the help menu
     (5 parts remaining) List the security job titles
     Your answer:
 
+### Command line options
+
+#### --hints
+
+To have hints always on (which is useful for when you're first learning terms),
+pass `--hints` to `study.py`
+
+    $ python study.py --hints sets/computer-security-management-ch5-flash-cards.quiz
+
+#### --shuffle
+
+To have the terms shuffled into random order, pass `--shuffle` to `study.py`
+
+    $ python study.py --shuffle sets/computer-security-management-ch5-flash-cards.quiz
+
+#### Combining command line options
+
+You can combine both `--shuffle` and `--hints` if you wish.
+
+    $ python study.py --hints --shuffle sets/computer-security-management-ch5-flash-cards.quiz
 
 Enjoy studying!
