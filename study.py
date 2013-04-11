@@ -100,22 +100,23 @@ def quiz_from_file(setPath, opts):
 ######################################################
 # Begin script execution
 ######################################################
-parser = argparse.ArgumentParser()
-parser.add_argument("--shuffle", action="store_true", 
-        help="shuffle the terms in random order")
-parser.add_argument("--hints", action="store_true", 
-        help="always display hints (useful for first learning terms)")
-parser.add_argument("setPath", type=str, 
-        help="path to the set you wish to study")
-args = parser.parse_args()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--shuffle", action="store_true", 
+            help="shuffle the terms in random order")
+    parser.add_argument("--hints", action="store_true", 
+            help="always display hints (useful for first learning terms)")
+    parser.add_argument("setPath", type=str, 
+            help="path to the set you wish to study")
+    args = parser.parse_args()
 
-setPath = args.setPath
-opts = {
-    "shuffle": args.shuffle,
-    "hints": args.hints,
-}
+    setPath = args.setPath
+    opts = {
+        "shuffle": args.shuffle,
+        "hints": args.hints,
+    }
 
-if(os.path.exists(setPath)):
-    quiz_from_file(setPath, opts)
-else:
-    print("\nNo flashcard set exists at %s\n" % setPath)
+    if(os.path.exists(setPath)):
+        quiz_from_file(setPath, opts)
+    else:
+        print("\nNo flashcard set exists at %s\n" % setPath)
