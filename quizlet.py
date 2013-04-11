@@ -1,5 +1,4 @@
 import requests
-from random import shuffle
 import json
 import os
 import re
@@ -103,24 +102,4 @@ def hintify(answerPart):
             i += 1
 
     return "".join(answerStr)
-
-
-def download_flashcard_set(setID):
-    flashcardSet = get_flashcard_set(setID)
-
-    if (flashcardSet['http_code'] != 200):
-        print("Unable to access flashcard set %s" % setID)
-        return
-
-    # Get computer friendly set name
-    cardURL = flashcardSet['url'].split('/')[-2]
-    setFilename = cardURL + ".quiz"
-    setPath = os.path.join(SET_DIR, setFilename)
-
-    f = open(setPath, 'w')
-    save_flashcard_set_terms_to_file(flashcardSet, f)
-    f.close()
-
-    title = flashcardSet['title']
-    print("Downloaded '%s' set to sets/%s" % (title, setFilename))
 
