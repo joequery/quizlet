@@ -63,9 +63,9 @@ def quiz_from_file(setPath, opts):
         print("Question %d/%d" % (questionNumber+1, len(terms)))
 
         while answerParts:
+            display_term(term, answerParts)
             if(opts['hints']):
                 display_hint(answerParts)
-            display_term(term, answerParts)
 
             userAnswer = raw_input('Your answer: ')
             print("")
